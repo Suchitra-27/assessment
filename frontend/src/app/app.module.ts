@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { GroupComponent } from './components/group/group.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([]) // Ensure routing is enabled
   ],
   providers: [],
