@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Groups</h1>
+  
+  <!-- Search Box -->
+  <input class="search-box" type="text" placeholder="Search Text">
+
+  <!-- List of Groups -->
+  <ul>
+    <li *ngFor="let group of groups">
+      <strong>{{ group.first_name }}</strong> - {{ group.email }} (nv: {{ group.nv }})
+    </li>
+  </ul>
+
+  <!-- Action Buttons -->
+  <div class="button-container">
+    <button class="cancel-button">Cancel</button>
+    <button class="select-button">Select</button>
+  </div>
+</div>
