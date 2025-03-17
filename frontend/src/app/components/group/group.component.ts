@@ -15,6 +15,8 @@ interface Group {
 })
 export class GroupComponent implements OnInit {
   groups: Group[] = [];
+  filteredGroups: Group[] = []; // ✅ This will store filtered results
+  searchText: string = '';
 
   constructor(private http: HttpClient) {}
 
@@ -26,10 +28,19 @@ export class GroupComponent implements OnInit {
     this.http.get<Group[]>('http://127.0.0.1:8000/groups').subscribe(
       (data) => {
         this.groups = data;
+        this.filteredGroups = data; // ✅ Initialize filteredGroups
       },
       (error) => {
         console.error('Error fetching groups:', error);
       }
+    );
+  }
+
+  onSearchChange() {
+    this.filteredGroups = this.groups.filter(group =>
+      group.first_name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      group.email.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      group.nv.toString().includes(this.searchText)
     );
   }
 }
