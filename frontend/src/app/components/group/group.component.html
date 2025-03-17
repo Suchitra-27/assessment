@@ -1,19 +1,53 @@
 <div class="container">
-  <h1>Groups</h1>
-  
   <!-- Search Box -->
-  <input class="search-box" type="text" placeholder="Search Text">
+  <div class="search-container">
+    <span class="search-icon">🔍</span>
+    <input
+      class="search-box"
+      type="text"
+      placeholder="Search Text"
+      [(ngModel)]="searchText"
+      (input)="onSearchChange()"
+    />
+  </div>
 
-  <!-- List of Groups -->
-  <ul>
-    <li *ngFor="let group of groups">
-      <strong>{{ group.first_name }}</strong> - {{ group.email }} (nv: {{ group.nv }})
-    </li>
-  </ul>
+  <!-- Table -->
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>first_name</th>
+        <th>email</th>
+        <th>nv</th>
+        <th>Aggregated Ratio</th>
+        <th>Aggregated Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Below-500</td>
+        <td>Below-500</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Dropdown List -->
+  <div class="list-container">
+    <strong>Select</strong>
+    <ul>
+      <li *ngFor="let group of filteredGroups">
+        {{ group.id }} | {{ group.first_name }} | {{ group.email }} | {{ group.nv }}
+      </li>
+    </ul>
+  </div>
 
   <!-- Action Buttons -->
   <div class="button-container">
-    <button class="cancel-button">Cancel</button>
-    <button class="select-button">Select</button>
+    <button class="cancel-btn">Cancel</button>
+    <button class="select-btn">Select</button>
   </div>
 </div>
